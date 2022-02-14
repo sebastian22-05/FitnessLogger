@@ -13,6 +13,8 @@ import com.example.fitnesslogger.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private val RQ_SPEECH_REC = 102
+
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
