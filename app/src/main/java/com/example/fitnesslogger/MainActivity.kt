@@ -1,7 +1,7 @@
 package com.example.fitnesslogger
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.speech.RecognizerIntent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,8 +12,6 @@ import android.view.MenuItem
 import com.example.fitnesslogger.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
-    private val RQ_SPEECH_REC = 102
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -29,11 +27,6 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -57,4 +50,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+
 }
