@@ -72,8 +72,7 @@ class FirstFragment : Fragment() {
             RQ_SPEECH_REC -> {
                 if (resultCode == Activity.RESULT_OK && null != data) {
                     val result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-                    binding.textviewFirst.text = result?.get(0)
-                    
+                    binding.exerciseText.text = result?.get(0)
                 }
             }
         }
