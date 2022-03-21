@@ -1,6 +1,7 @@
 package com.example.fitnesslogger
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
@@ -11,13 +12,14 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesslogger.databinding.FragmentFirstBinding
 import java.io.File
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
 import java.util.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
-
 
     private val RQ_SPEECH_REC = 100
     private var _binding: FragmentFirstBinding? = null
