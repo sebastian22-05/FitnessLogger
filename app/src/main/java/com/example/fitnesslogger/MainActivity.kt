@@ -10,6 +10,11 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.example.fitnesslogger.databinding.ActivityMainBinding
+import io.realm.Realm
+import io.realm.log.LogLevel
+import io.realm.log.RealmLog
+import io.realm.mongodb.App
+import io.realm.mongodb.AppConfiguration
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
