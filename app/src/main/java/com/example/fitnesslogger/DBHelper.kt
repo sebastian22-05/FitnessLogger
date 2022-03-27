@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.fitnesslogger.databinding.FragmentFirstBinding
+import java.util.ArrayList
 
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
@@ -33,42 +34,35 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     // This method is for adding data in our database
     fun addExercise(exercise : String, date : String ){
 
-        // below we are creating
-        // a content values variable
         val values = ContentValues()
 
-        // we are inserting our values
-        // in the form of key-value pair
         values.put(EXERCISE_COL, exercise)
         values.put(DATE_COL, date)
 
-        // here we are creating a
-        // writable variable of
-        // our database as we want to
-        // insert value in our database
         val db = this.writableDatabase
 
-        // all values are inserted into database
         db.insert(TABLE_NAME, null, values)
 
-        // at last we are
-        // closing our database
         db.close()
     }
 
-    // below method is to get
-    // all data from our database
-    fun getExercise(): Cursor? {
-
-        // here we are creating a readable
-        // variable of our database
-        // as we want to read value from it
+    fun readExercises(): ArrayList<ExerciseModel> {
         val db = this.readableDatabase
+        val exerciseModelArrayList: ArrayList<ExerciseModel> = ArrayList<ExerciseModel>()
+        val cursorExercises = db.rawQuery("SELECT * FROM " + TABLE_NAME, null)
 
-        // below code returns a cursor to
-        // read data from the database
-        return db.rawQuery("SELECT * FROM " + TABLE_NAME, null)
-
+        if (cursorExercises.moveToFirst()) {
+            do {
+                exerciseModelArrayList.add(
+                    ExerciseModel(
+                        cursorExercises.getString(1),
+                        cursorExercises.getString(2)
+                    )
+                )
+            } while (cursorExercises.moveToNext())
+        }
+        cursorExercises.close()
+        return exerciseModelArrayList
     }
 
     companion object{

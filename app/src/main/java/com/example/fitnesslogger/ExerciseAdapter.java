@@ -1,2 +1,4 @@
-package com.example.fitnesslogger;public class ExerciseAdapter {
+package com.example.fitnesslogger;
+
+public class ExerciseAdapter {
 }
