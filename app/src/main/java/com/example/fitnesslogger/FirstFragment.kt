@@ -5,12 +5,12 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.speech.RecognizerIntent
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesslogger.databinding.FragmentFirstBinding
 import java.time.LocalDateTime
@@ -63,6 +63,8 @@ class FirstFragment : Fragment() {
             Toast.makeText(activity, exercise + " added to the database", Toast.LENGTH_LONG).show()
 
             binding.exerciseText.text = "Your exercise will appear here, if it's correct, please press save"
+
+            val i = Intent(activity, MainActivity::class.java)
 
         }
     }
