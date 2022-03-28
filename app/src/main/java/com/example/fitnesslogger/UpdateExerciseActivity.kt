@@ -27,7 +27,14 @@ class UpdateExerciseActivity : AppCompatActivity() {
 
         btnUpdateExercise.setOnClickListener{
             db?.updateExercise(exercise, edtExercise.text.toString())
-            Toast.makeText(this@UpdateExerciseActivity, "Exercise Updated..", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@UpdateExerciseActivity, "Exercise Updated", Toast.LENGTH_SHORT).show()
+            val i = Intent(this@UpdateExerciseActivity, MainActivity::class.java)
+            startActivity(i)
+        }
+
+        btnDeleteExercise.setOnClickListener {
+            db?.deleteExercise(exercise)
+            Toast.makeText(this@UpdateExerciseActivity, "Exercise Deleted", Toast.LENGTH_SHORT).show()
             val i = Intent(this@UpdateExerciseActivity, MainActivity::class.java)
             startActivity(i)
         }

@@ -75,6 +75,11 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.close()
     }
 
+    fun deleteExercise(exercise: String) {
+        val db = this.writableDatabase
+        db.delete(TABLE_NAME, "exercise=?", arrayOf(exercise))
+    }
+
     companion object{
         // here we have defined variables for our database
 
