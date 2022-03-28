@@ -1,6 +1,7 @@
 package com.example.fitnesslogger
 
 import android.content.Context
+import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
@@ -26,6 +27,14 @@ class ExerciseAdapter     // constructor
         val (exercise, date) = exerciseModelArrayList[position]
         holder.exerciseName.text = exercise
         holder.exerciseDate.text = date
+
+        holder.itemView.setOnClickListener { // on below line we are calling an intent.
+            val i = Intent(context, UpdateExerciseActivity::class.java)
+
+            i.putExtra("name", exercise)
+            // starting our activity.
+            context.startActivity(i)
+        }
     }
 
     override fun getItemCount(): Int {

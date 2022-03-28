@@ -65,6 +65,16 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return exerciseModelArrayList
     }
 
+    fun updateExercise(originalExercise : String, exercise: String){
+        val values = ContentValues()
+        val db = this.writableDatabase
+
+        values.put(EXERCISE_COL, exercise)
+
+        db.update(TABLE_NAME, values, "exercise=?", arrayOf(originalExercise))
+        db.close()
+    }
+
     companion object{
         // here we have defined variables for our database
 
