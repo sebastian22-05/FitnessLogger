@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="Date"
-        android:textSize="18pt" />
+        android:textSize="8pt" />
 
     <Button
         android:id="@+id/btnUpdateExercise"
