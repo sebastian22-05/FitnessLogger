@@ -28,10 +28,12 @@ class ExerciseAdapter     // constructor
         holder.exerciseName.text = exercise
         holder.exerciseDate.text = date
 
+
         holder.itemView.setOnClickListener { // on below line we are calling an intent.
             val i = Intent(context, UpdateExerciseActivity::class.java)
 
             i.putExtra("name", exercise)
+            i.putExtra("date", date)
             // starting our activity.
             context.startActivity(i)
         }

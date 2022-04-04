@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_update_exercise.*
 class UpdateExerciseActivity : AppCompatActivity() {
     private var db: DBHelper? = null
     var exercise: String = ""
+    var date: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,18 +23,20 @@ class UpdateExerciseActivity : AppCompatActivity() {
 
         db = DBHelper(this@UpdateExerciseActivity, null)
         exercise = intent.getStringExtra("name").toString()
+        date = intent.getStringExtra("date").toString()
 
         edtExercise.setText(exercise)
+        txtDate.text = date
 
         btnUpdateExercise.setOnClickListener{
-            db?.updateExercise(exercise, edtExercise.text.toString())
+            db?.updateExercise(exercise, edtExercise.text.toString(), txtDate.text.toString())
             Toast.makeText(this@UpdateExerciseActivity, "Exercise Updated", Toast.LENGTH_SHORT).show()
             val i = Intent(this@UpdateExerciseActivity, MainActivity::class.java)
             startActivity(i)
         }
 
         btnDeleteExercise.setOnClickListener {
-            db?.deleteExercise(exercise)
+            db?.deleteExercise(exercise, txtDate.text.toString())
             Toast.makeText(this@UpdateExerciseActivity, "Exercise Deleted", Toast.LENGTH_SHORT).show()
             val i = Intent(this@UpdateExerciseActivity, MainActivity::class.java)
             startActivity(i)

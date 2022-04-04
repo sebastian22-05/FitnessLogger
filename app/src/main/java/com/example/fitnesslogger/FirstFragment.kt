@@ -54,7 +54,7 @@ class FirstFragment : Fragment() {
             val exercise = binding.exerciseText.text.toString()
             val current = LocalDateTime.now()
 
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy")
             val formatted = current.format(formatter)
             val date = formatted.toString()
 

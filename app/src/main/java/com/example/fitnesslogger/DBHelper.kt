@@ -56,7 +56,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 exerciseModelArrayList.add(
                     ExerciseModel(
                         cursorExercises.getString(1),
-                        cursorExercises.getString(2)
+                        cursorExercises.getString(2),
                     )
                 )
             } while (cursorExercises.moveToNext())
@@ -65,19 +65,22 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return exerciseModelArrayList
     }
 
-    fun updateExercise(originalExercise : String, exercise: String){
+    fun updateExercise(originalExercise : String, exercise: String, date: String){
         val values = ContentValues()
         val db = this.writableDatabase
 
         values.put(EXERCISE_COL, exercise)
 
-        db.update(TABLE_NAME, values, "exercise=?", arrayOf(originalExercise))
+        val whereClause = "exercise=?" + " AND date=?"
+
+        db.update(TABLE_NAME, values, whereClause, arrayOf(originalExercise, date))
         db.close()
     }
 
-    fun deleteExercise(exercise: String) {
+    fun deleteExercise(exercise: String, date: String) {
         val db = this.writableDatabase
-        db.delete(TABLE_NAME, "exercise=?", arrayOf(exercise))
+        val whereClause = "exercise=?" + " AND date=?"
+        db.delete(TABLE_NAME, whereClause, arrayOf(exercise, date))
     }
 
     companion object{

@@ -28,6 +28,14 @@
         android:layout_margin="10dp"
         android:hint="Enter exercise" />
 
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Date"
+        android:textSize="18pt" />
+
     <Button
         android:id="@+id/btnUpdateExercise"
         android:layout_width="match_parent"
