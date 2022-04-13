@@ -49,24 +49,6 @@ class FirstFragment : Fragment() {
         binding.btnSpeak.setOnClickListener {
             speak()
         }
-        binding.btnSave.setOnClickListener {
-            val db = context?.let { it1 -> DBHelper(it1, null) }
-            val exercise = binding.exerciseText.text.toString()
-            val current = LocalDateTime.now()
-
-            val formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy")
-            val formatted = current.format(formatter)
-            val date = formatted.toString()
-
-            db?.addExercise(exercise, date)
-
-            Toast.makeText(activity, exercise + " added to the database", Toast.LENGTH_LONG).show()
-
-            binding.exerciseText.text = "Your exercise will appear here, if it's correct, please press save"
-
-            val i = Intent(activity, MainActivity::class.java)
-
-        }
     }
 
     override fun onDestroyView() {
@@ -94,7 +76,22 @@ class FirstFragment : Fragment() {
             RQ_SPEECH_REC -> {
                 if (resultCode == Activity.RESULT_OK && null != data) {
                     val result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-                    binding.exerciseText.text = result?.get(0)
+
+                    val db = context?.let { it1 -> DBHelper(it1, null) }
+                    val exercise = result?.get(0)
+                    val current = LocalDateTime.now()
+
+                    val formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy")
+                    val formatted = current.format(formatter)
+                    val date = formatted.toString()
+
+                    if (exercise != null) {
+                        db?.addExercise(exercise, date)
+                    }
+
+                    Toast.makeText(activity, exercise + " added", Toast.LENGTH_LONG).show()
+
+                    val i = Intent(activity, MainActivity::class.java)
                 }
             }
         }

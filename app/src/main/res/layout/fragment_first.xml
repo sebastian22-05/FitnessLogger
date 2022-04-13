@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="130dp"
-        android:layout_height="106dp"
-        android:layout_marginBottom="32dp"
-        android:text="Save Exercise"
-        app:layout_constraintBottom_toTopOf="@+id/button_first"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/introText"
@@ -25,16 +15,16 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btnSpeak"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.772" />
+        app:layout_constraintVertical_bias="0.606" />
 
     <Button
         android:id="@+id/button_first"
         android:layout_width="130dp"
         android:layout_height="106dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="212dp"
         android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,24 +35,12 @@
         android:id="@+id/btnSpeak"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="84dp"
         android:src="@android:drawable/ic_btn_speak_now"
-        app:layout_constraintBottom_toTopOf="@+id/exerciseText"
+        app:layout_constraintBottom_toTopOf="@+id/button_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/exerciseText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:text="Your exercise will appear here, if it's correct, please press save"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSave"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
