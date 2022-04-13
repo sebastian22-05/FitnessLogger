@@ -20,7 +20,9 @@
             android:layout_height="wrap_content"
             android:padding="3dp"
             android:text="Exercise"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <!--text view for our course description-->
         <TextView
