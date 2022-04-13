@@ -26,7 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Enter exercise" />
+        android:hint="Enter exercise"
+        android:minHeight="48dp" />
 
     <TextView
         android:id="@+id/txtDate"
@@ -43,11 +44,13 @@
         android:layout_margin="10dp"
         android:text="Update exercise"
         android:textAllCaps="false" />
+
     <Button
         android:id="@+id/btnDeleteExercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:backgroundTint="#FF0000"
         android:text="Delete exercise"
         android:textAllCaps="false" />
 
