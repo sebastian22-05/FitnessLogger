@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Press the button below to log a workout"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btnSpeak"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -43,8 +43,8 @@
 
     <ImageButton
         android:id="@+id/btnSpeak"
-        android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="48dp"
         android:src="@android:drawable/ic_btn_speak_now"
         app:layout_constraintBottom_toTopOf="@+id/exerciseText"
@@ -58,6 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
         android:text="Your exercise will appear here, if it's correct, please press save"
+        android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btnSave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
