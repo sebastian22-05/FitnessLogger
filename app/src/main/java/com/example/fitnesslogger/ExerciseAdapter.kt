@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.TextView
 import java.util.ArrayList
 
+//code inspired by https://www.geeksforgeeks.org/how-to-read-data-from-sqlite-database-in-android/
 class ExerciseAdapter     // constructor
     (// variable for our array list and context
     private val exerciseModelArrayList: ArrayList<ExerciseModel>, private val context: Context
@@ -31,7 +32,7 @@ class ExerciseAdapter     // constructor
 
         holder.itemView.setOnClickListener { // on below line we are calling an intent.
             val i = Intent(context, UpdateExerciseActivity::class.java)
-
+            //gets the exercise that was clicked
             i.putExtra("name", exercise)
             i.putExtra("date", date)
             // starting our activity.

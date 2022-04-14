@@ -16,6 +16,7 @@ import java.util.ArrayList
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
+//code inspired by https://www.geeksforgeeks.org/how-to-read-data-from-sqlite-database-in-android/
 class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
@@ -35,17 +36,18 @@ class SecondFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //initialises instances of other classes
         super.onViewCreated(view, savedInstanceState)
         var exerciseModelArrayList: ArrayList<ExerciseModel>? = null
         var exerciseAdapter: ExerciseAdapter? = null
         var exercisesRV: RecyclerView? = null
-
+        //reads all values in the database
         val db = context?.let { it1 -> DBHelper(it1, null) }
 
         exerciseModelArrayList = db!!.readExercises()
         exerciseAdapter = activity?.let { ExerciseAdapter(exerciseModelArrayList, it) }
         exercisesRV = view?.findViewById(R.id.exerciseList)
-
+        //shows all the exercises in the list format
         val linearLayoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         exercisesRV!!.layoutManager = linearLayoutManager
 

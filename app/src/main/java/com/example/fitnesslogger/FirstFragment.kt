@@ -55,7 +55,8 @@ class FirstFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
+    //Function which allows the user to use their voice as an input
+    //code inspired by https://www.youtube.com/watch?v=a7-Z9awsods
     private fun speak() {
         val mIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         mIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
@@ -70,25 +71,26 @@ class FirstFragment : Fragment() {
         }
     }
 
+    //Function which recognises the speech input and then stores this to the database
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when(requestCode) {
             RQ_SPEECH_REC -> {
                 if (resultCode == Activity.RESULT_OK && null != data) {
                     val result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-
+                    //instance of the database helper class is made
                     val db = context?.let { it1 -> DBHelper(it1, null) }
                     val exercise = result?.get(0)
                     val current = LocalDateTime.now()
-
+                    //gets the device's date/time
                     val formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy")
                     val formatted = current.format(formatter)
                     val date = formatted.toString()
-
+                    //calls the add function to save exercise to the databse
                     if (exercise != null) {
                         db?.addExercise(exercise, date)
                     }
-
+                    //pop up to show which exercise has been added
                     Toast.makeText(activity, exercise + " added", Toast.LENGTH_LONG).show()
 
                     val i = Intent(activity, MainActivity::class.java)
