@@ -45,12 +45,12 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         db.close()
     }
-
+    //function to read all exercises from the database
     fun readExercises(): ArrayList<ExerciseModel> {
         val db = this.readableDatabase
         val exerciseModelArrayList: ArrayList<ExerciseModel> = ArrayList<ExerciseModel>()
         val cursorExercises = db.rawQuery("SELECT * FROM " + TABLE_NAME, null)
-
+        //passes all the exercises in the database through the exercise model in order to lay them out correctly in the view page
         if (cursorExercises.moveToFirst()) {
             do {
                 exerciseModelArrayList.add(
@@ -64,7 +64,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         cursorExercises.close()
         return exerciseModelArrayList
     }
-
+    //function to update/edit an exercise from the database
     fun updateExercise(originalExercise : String, exercise: String, date: String){
         val values = ContentValues()
         val db = this.writableDatabase
@@ -76,7 +76,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.update(TABLE_NAME, values, whereClause, arrayOf(originalExercise, date))
         db.close()
     }
-
+    //function to delete an exercise from the database
     fun deleteExercise(exercise: String, date: String) {
         val db = this.writableDatabase
         val whereClause = "exercise=?" + " AND date=?"
